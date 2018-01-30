@@ -1,12 +1,25 @@
 import logging
 import pymongo
 import random
-import secrets
 import time
 from loader import data
 from loader.utils import RepeatedTimer
 from datetime import datetime as dt
 from pymongo.errors import BulkWriteError
+
+# 3.5 and earlier does not have secrets
+try:
+    import secrets as s
+except:
+    import loader.secrets as s
+
+# 3.5 and earlier the random object does not have choices method
+# we created a function in utils as the choices() method is an
+# instance method
+try:
+    from random import choices
+except:
+    from loader.utils import choices
 
 logger = logging.getLogger(__name__)
 
@@ -41,9 +54,9 @@ def _generate_user():
     user['_id'] = user['fname'] + '.' + user['lname']
     user['email'] = user['fname'] + '.' + user['lname'] + '@' + random.choice(data.INTERNET_DOMAINS)
     user['created_at'] = dt.now()
-    user['pw'] = secrets.token_hex(30)
+    user['pw'] = s.token_hex(30)
     user['is_locked'] = False
-    user['interests'] = random.choices(data.LOREM_IPSUM_TAGS, k=random.randint(2, 15))
+    user['interests'] = choices(data.LOREM_IPSUM_TAGS, k=random.randint(2, 15))
     return user
 
 #
@@ -106,11 +119,11 @@ def generate_blog(db):
     no_of_authors = db['users'].count({'is_author': True})
     author_cursor = db['users'].find({'is_author': True}, {'_id': 1}).skip(random.randint(0, (no_of_authors-1))).limit(1)
     blog = {}
-    blog['title'] = ' '.join(random.choices(data.LOREM_IPSUM_TAGS, k=random.randint(2, 5)))
-    blog['tags'] = random.choices(data.LOREM_IPSUM_TAGS, k=random.randint(2, 12))
+    blog['title'] = ' '.join(choices(data.LOREM_IPSUM_TAGS, k=random.randint(2, 5)))
+    blog['tags'] = choices(data.LOREM_IPSUM_TAGS, k=random.randint(2, 12))
     blog['created_on'] = dt.now()
     blog['author'] = author_cursor.next()['_id']
-    blog['content'] = '\n'.join([data.LOREM_IPSUM[k] for k in random.choices(list(data.LOREM_IPSUM.keys()), k=random.randint(1,40))])
+    blog['content'] = '\n'.join([data.LOREM_IPSUM[k] for k in choices(list(data.LOREM_IPSUM.keys()), k=random.randint(1,40))])
     blog['is_locked'] = False
 
     author_cursor.close()
@@ -199,7 +212,7 @@ def find_latest_blogs(db):
 #
 def find_blog_by_tags(db):
     logger.debug('find_blog_by_tags')
-    tags = random.choices(data.LOREM_IPSUM_TAGS, k=random.randint(1, 10))
+    tags = choices(data.LOREM_IPSUM_TAGS, k=random.randint(1, 10))
     counter = 0
     for doc in db['blogs'].find({'tags': {'$in': tags}}):
         counter = counter + 1
@@ -263,7 +276,7 @@ def update_blog(db):
         {'_id': doc['_id'], 'is_locked': True},
         {'$set': {
             'is_locked': False,
-            'content': '\n'.join([data.LOREM_IPSUM[k] for k in random.choices(list(data.LOREM_IPSUM.keys()), k=random.randint(1,40))]),
+            'content': '\n'.join([data.LOREM_IPSUM[k] for k in choices(list(data.LOREM_IPSUM.keys()), k=random.randint(1,40))]),
             'updated_on': dt.now()
         }}
     )

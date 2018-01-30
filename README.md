@@ -198,3 +198,7 @@ blog itself is updated.
 Once every 20 seconds all old comments that exceed the 100000 document threshold are removed one at a time.
 
 **TODO** possibly introduce code to ensure writes happen successfully 
+
+# Contributors
+shawn McCarthy
+Mike Lynn
