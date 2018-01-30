@@ -34,17 +34,17 @@ logger = logging.getLogger(__name__)
 #
 
 # timeings for thread runs
-GENERATE_BLOG_SECONDS=5
+GENERATE_BLOG_SECONDS=2
 GENERATE_COMMENT_SECONDS=2
-UPDATE_BLOG_SECONDS=10
-UPDATE_AUTHOR=5
-TAG_ANALYTICS_SECONDS=10
-CLEANUP_BLOG_COMMENTS_SECONDS=20
-CLEANUP_COMMENTS_SECONDS=20
-FIND_LATEST_BLOG_SECONDS=5
-FIND_BLOGS_BY_AUTHOR_SECONDS=5
-FIND_BLOG_BY_TAGS_SECONDS=5
-FACET_SEARCH_SECONDS=5
+UPDATE_BLOG_SECONDS=5
+UPDATE_USER_SECONDS=2
+TAG_ANALYTICS_SECONDS=5
+CLEANUP_BLOG_COMMENTS_SECONDS=10
+CLEANUP_COMMENTS_SECONDS=10
+FIND_LATEST_BLOG_SECONDS=2
+FIND_BLOGS_BY_AUTHOR_SECONDS=2
+FIND_BLOG_BY_TAGS_SECONDS=2
+FACET_SEARCH_SECONDS=2
 
 def _generate_user():
     user = {}
@@ -251,7 +251,7 @@ def cleanup_comments(db):
     logger.debug('cleanup_comments')
     c_count = db['comments'].count()
     counter = 0
-    if c_count < 100000:
+    if c_count < 1000000:
         logger.info('too few comments, not going to run cleanup')
         return
 
@@ -287,6 +287,31 @@ def update_blog(db):
         logger.info('successfully updated document')
     b_cursor.close()
 
+def update_user(db):
+    logger.debug('update a single user - changing tags')
+    u_count = db['users'].count()
+    u_cursor = db['users'].find().skip(random.randint(0, (u_count-1))).limit(1)
+    u_doc = u_cursor.next()
+
+    doc = db['users'].find_one_and_update({'_id': u_doc['_id'], 'is_locked': False}, {'$set': {'is_locked': True}})
+
+    while doc == None:
+        doc = db['blogs'].find_one_and_update({'_id': u_doc['_id'], 'is_locked': False}, {'$set': {'is_locked': True}})
+
+    update = db['users'].find_one_and_update(
+        {'_id': doc['_id'], 'is_locked': True},
+        {'$set': {
+            'is_locked': False,
+            'interests': choices(data.LOREM_IPSUM_TAGS, k=random.randint(2, 15)),
+            'updated_on': dt.now()
+        }}
+    )
+
+    if update == None:
+        logger.warning('update did not work for %s, must validate lock' % doc['_id'])
+    else:
+        logger.info('successfully updated user document')
+    u_cursor.close()
 #
 # start run, will drop existing database, create users, then the tags, then the blogs
 # will provide comments and updates to the blog for some amount of time (could be forever)
@@ -306,6 +331,8 @@ def start_blog_run(db, no_of_blogs=10000, no_of_authors=100, no_of_users=900):
     facet_runner = RepeatedTimer(FACET_SEARCH_SECONDS, -1, blog_facet_search, db)
     comment_cleanup_runner = RepeatedTimer(CLEANUP_COMMENTS_SECONDS, -1, cleanup_comments, db)
     update_blog_runner = RepeatedTimer(UPDATE_BLOG_SECONDS, -1, update_blog, db)
+    tag_analytics_runner = RepeatedTimer(TAG_ANALYTICS_SECONDS, -1, generate_tag_analytics, db)
+    update_user_runer = RepeatedTimer(UPDATE_USER_SECONDS, -1, update_user, db)
 
     blog_create_runner.start()
     blog_comment_runner.start()
@@ -316,6 +343,8 @@ def start_blog_run(db, no_of_blogs=10000, no_of_authors=100, no_of_users=900):
     facet_runner.start()
     comment_cleanup_runner.start()
     update_blog_runner.start()
+    tag_analytics_runner.start()
+    update_user_runer.start()
 
     while blog_create_runner.counter <= blog_create_runner.iterations:
         logger.info('still running: %d <= %d' % (blog_create_runner.counter, blog_create_runner.iterations))
