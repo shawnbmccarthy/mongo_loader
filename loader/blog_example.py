@@ -279,7 +279,7 @@ def update_blog(db):
 # will provide comments and updates to the blog for some amount of time (could be forever)
 #
 def start_blog_run(db, no_of_blogs=10000, no_of_authors=100, no_of_users=900):
-    logger.info('attempting to start blog demo application')
+    logger.info('attempting to start blog demo application (no_of_blogs: %d, no_of_authors: %d, no_of_users: %d)' % (no_of_blogs, no_of_authors, no_of_users))
 
     generate_user(db, no_of_authors, no_of_users)
     generate_tags(db)
@@ -304,8 +304,8 @@ def start_blog_run(db, no_of_blogs=10000, no_of_authors=100, no_of_users=900):
     comment_cleanup_runner.start()
     update_blog_runner.start()
 
-    while blog_create_runner.counter <= blog_create_runner.interval:
-        logger.info('still running: %d' % blog_create_runner.counter)
+    while blog_create_runner.counter <= blog_create_runner.iterations:
+        logger.info('still running: %d <= %d' % (blog_create_runner.counter, blog_create_runner.iterations))
         time.sleep(10)
 
     logger.info('created all blogs, now just running updates and good stuff')

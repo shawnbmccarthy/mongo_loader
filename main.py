@@ -57,6 +57,6 @@ if __name__ == '__main__':
         args.loader = 'blog'
 
     if args.loader == 'blog':
-        blog_example.start_blog_run(db, no_of_authors=args.authors, no_of_users=args.users)
+        blog_example.start_blog_run(db, no_of_blogs=args.blogs, no_of_authors=args.authors, no_of_users=args.users)
     else:
         logger.error('invalid loader: %s, cannot continue' % args.loader)
