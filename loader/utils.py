@@ -6,24 +6,44 @@ from threading import Timer
 
 util_logger = logging.getLogger(__name__)
 
-# stack overflow
+
 class RepeatedTimer(object):
-    def __init__(self, interval, iterations, function, db):
-        self.logger     = logging.getLogger(__name__)
-        self._timer     = None
-        self.interval   = interval
+    """
+
+    """
+    def __init__(self, interval, iterations, func, db):
+        """
+
+        :param interval:
+        :param iterations:
+        :param func:
+        :param db:
+        """
+        self.logger = logging.getLogger(__name__)
+        self._timer = None
+        self.interval = interval
         self.iterations = iterations
-        self.counter    = 0
-        self.function   = function
-        self.db         = db
+        self.counter = 0
+        self.func = func
+        self.db = db
         self.is_running = False
 
     def _run(self):
+        """
+
+        :return:
+        """
+        self.logger.debug('attempting to start function')
         self.is_running = False
         self.start()
-        self.function(self.db)
+        self.func(self.db)
 
     def start(self):
+        """
+
+        :return:
+        """
+        self.logger.debug('attempting to start')
         if not self.is_running:
             self._timer = Timer(self.interval, self._run)
             self._timer.start()
@@ -33,21 +53,26 @@ class RepeatedTimer(object):
             self.stop()
 
     def stop(self):
+        """
+
+        :return:
+        """
+        self.logger.debug('attempting to stop')
         self._timer.cancel()
         self.is_running = False
 
 
-#
-# need to test this
-# TODO: the choices() in random 3.6 is part of an object (not sure how this could break things
-#
 def choices(population, weights=None, *, cum_weights=None, k=1):
-    """Return a k sized list of population elements chosen with replacement.
+    """
+    Return a k sized list of population elements chosen with replacement.
 
     If the relative weights or cumulative weights are not specified,
     the selections are made with equal probability.
 
+    This emulates choices() which is found in the random module in 3.6
+
     """
+    util_logger.debug('running choices')
     if cum_weights is None:
         if weights is None:
             _int = int

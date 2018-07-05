@@ -1,16 +1,16 @@
 #
 # contains list of data used to generate various random data in real world examples
 #
-DAYS_IN_YEAR     = 365
-HOURS_IN_YEAR    = DAYS_IN_YEAR * 24
-MINUTES_IN_YEAR  = HOURS_IN_YEAR * 60
-MONTHS_IN_YEAR   = 12
-MAX_DIMENSION    = 300
-HUNDRED          = 100.00
-THOUSAND         = 1000.00
-TEN_THOUSAND     = 10000.00
+DAYS_IN_YEAR = 365
+HOURS_IN_YEAR = DAYS_IN_YEAR * 24
+MINUTES_IN_YEAR = HOURS_IN_YEAR * 60
+MONTHS_IN_YEAR = 12
+MAX_DIMENSION = 300
+HUNDRED = 100.00
+THOUSAND = 1000.00
+TEN_THOUSAND = 10000.00
 HUNDRED_THOUSAND = 100000.00
-ONE_MILLION      = 1000000.00
+ONE_MILLION = 1000000.00
 
 #
 # taken from some of my favorite shows, if main character does not have a last name - the name is smith
@@ -107,56 +107,207 @@ INTERNET_DOMAINS = [
 ]
 
 CITIES_STATES = [
-    {'s': 'AL', 'n': 'Alabama', 'c': ['Birmingham', 'Mobile', 'Montgomery', 'Gulf Shores', 'Huntsville', 'Auburn', 'Gadsden']},
-    {'s': 'AK', 'n': 'Alaska', 'c': ['Anchorage', 'Fairbanks', 'Juneau', 'Kodiak', 'Kenai', 'Homer', 'Nome', 'Sitka', 'Wasilla']},
-    {'s': 'AZ', 'n': 'Arizona', 'c': ['Phoenix', 'Tuscan', 'Scottsdale', 'Mesa', 'Tempe', 'Chandler', 'Flagstaff', 'Glendale']},
-    {'s': 'AR', 'n': 'Arkansas', 'c': ['Little Rock', 'Fayetteville', 'Fort Smith', 'Hot Springs', 'Rogers', 'Springdale']},
-    {'s': 'CA', 'n': 'California', 'c': ['Los Angeles', 'San Francisco', 'San Diego', 'Sacramento', 'San Jose', 'Sacramento']},
-    {'s': 'CO', 'n': 'Colorado', 'c': ['Denver', 'Colorado Springs', 'Boulder', 'Aspen', 'Grand Junction', 'Pueblo', 'Durango']},
-    {'s': 'CT', 'n': 'Connecticut', 'c': ['Hartford', 'New Haven', 'Stamford', 'Bridgeport', 'Greenwich', 'Milford']},
-    {'s': 'DE', 'n': 'Detroit', 'c': ['Dover', 'Wimington', 'Newark', 'Milford', 'Middletown', 'Smyrna', 'Lewes']},
-    {'s': 'FL', 'n': 'Florida', 'c': ['Tallahassee', 'Miami', 'Orlando', 'Tampa', 'Key West', 'Fort Myers', 'Naples', 'Sarasota']},
-    {'s': 'GA', 'n': 'Georgia', 'c': ['Atlanta', 'Savannah', 'Augusta', 'Athens', 'Alpharetta', 'Macon', 'Kennesaw', 'Decatur']},
-    {'s': 'HI', 'n': 'Hawaii', 'c': ['Honolulu', 'Kailua', 'Haleiwa', 'Kaneohe', 'Makaha', 'Waimea', 'Haiku', 'Kahuku', 'Kalapana']},
-    {'s': 'ID', 'n': 'Idaho', 'c': ['Boise', 'Idaho Falls', 'Nampa', 'Twin Falls', 'Moscow', 'Eagle', 'Sandpoint' 'Pocatello']},
-    {'s': 'IL', 'n': 'Illinois', 'c': ['Springfield', 'Chicago', 'Rockford', 'Evanston', 'Joliet', 'Elgin', 'Peoria', 'Naperville']},
-    {'s': 'IN', 'n': 'Indiana', 'c': ['Indianapolis', 'Bloomington', 'South Bend', 'Gary', 'Fort Wayne', 'Carmel', 'Michigan City']},
-    {'s': 'IA', 'n': 'Iowa', 'c': ['Des Moines', 'Iowa City', 'Cedar Rapids', 'Davenport', 'Waterloo', 'Ankeny', 'Siox City']},
-    {'s': 'KS', 'n': 'Kansas', 'c': ['Topeka', 'Witchita', 'Kansas City', 'Shawnee', 'Manhattan', 'Salina', 'Hutchinson', 'Lenexa']},
-    {'s': 'KY', 'n': 'Kentucky', 'c': ['Frankfort', 'Louisville', 'Lexington', 'Murray', 'Bowling Green', 'Owensboro', 'Nicholasville']},
-    {'s': 'LA', 'n': 'Louisiana', 'c': ['Baton Rouge', 'New Orleans', 'Lafayette', 'Alexandria', 'Slidell', 'Kenner', 'Slidell']},
-    {'s': 'ME', 'n': 'Maine', 'c': ['Augusta', 'Portland', 'Bangor', 'Bar Harbor', 'Camden', 'Lewiston', 'Rockland', 'Ogunquit']},
-    {'s': 'MD', 'n': 'Maryland', 'c': ['Annapolis', 'Baltimore', 'Rockville', 'Silver Spring', 'College Park']},
-    {'s': 'MA', 'n': 'Massachusetts', 'c': ['Boston', 'Cambridge', 'Worcester', 'Salem', 'Springfield', 'Waltham', 'Framingham']},
-    {'s': 'MI', 'n': 'Michigan', 'c': ['Lansing', 'Detroit', 'Ann Arbor', 'Grand Rapids', 'Flint', 'Kalamazoo', 'Troy']},
-    {'s': 'MN', 'n': 'Minnesota', 'c': ['St. Paul', 'Minneapolis', 'Duluth', 'St. Cloud', 'Mankato', 'Minnetonka', 'Eagan']},
-    {'s': 'MS', 'n': 'Mississippi', 'c': ['Jackson', 'Biloxi', 'Gulfport', 'Tupelo', 'Oxford', 'Vicksburg', 'Ocean Springs']},
-    {'s': 'MO', 'n': 'Missouri', 'c': ['Jefferson City', 'St. Louis', 'Kansas City', 'Jefferson City', 'Ozark', 'Joplin']},
-    {'s': 'MT', 'n': 'Montana', 'c': ['Helena', 'Missoula', 'Billings', 'Bozeman', 'Great Falls', 'Butte', 'Whitefish']},
-    {'s': 'NE', 'n': 'Nebraska', 'c': ['Lincoln', 'Omaha', 'Grand Island', 'Norfolk', 'Hastings', 'Fremont']},
-    {'s': 'NV', 'n': 'Nevada', 'c': ['Carson City', 'Las Vegas', 'Reno', 'Henderson', 'Sparks', 'Elko', 'Boulder City']},
-    {'s': 'NH', 'n': 'New Hampshire', 'c': ['Concord', 'Manchester', 'Portsmouth', 'Keene', 'Derry', 'Lebanon', 'Hanover']},
-    {'s': 'NJ', 'n': 'New Jersey', 'c': ['Trenton', 'Newark', 'Atlantic City', 'Jersey City', 'Hoboken', 'Cape May', 'Toms River']},
-    {'s': 'NM', 'n': 'New Mexico', 'c': ['Santa Fe', 'Alburquerque', 'Santa Fe', 'Taos', 'Roswell', 'Farmington']},
-    {'s': 'NY', 'n': 'New York', 'c': ['Albany', 'Troy', 'New York City', 'Buffalo', 'Syracuse', 'Rochester', 'Ithaca', 'Yonkers']},
-    {'s': 'NC', 'n': 'North Carolina', 'c': ['Raleigh', 'Charlotte', 'Durham', 'Greensboro', 'Wimington', 'Cary', 'High Point']},
-    {'s': 'ND', 'n': 'North Dakota', 'c': ['Bismark', 'Fargo', 'Grand Forks', 'Minot', 'Mandan', 'Devils Lake', 'Wahpeton']},
-    {'s': 'OH', 'n': 'Ohio', 'c': ['Columbus', 'Cleveland', 'Cincinnati', 'Dayton', 'Akron', 'Toledo', 'Canton', 'Kent']},
-    {'s': 'OK', 'n': 'Oklahoma', 'c': ['Oklahoma City', 'Tulsa', 'Norman', 'Edmond', 'Broken Arrow', 'Stillwater', 'Moore']},
-    {'s': 'OR', 'n': 'Oregon', 'c': ['Salem', 'Portland', 'Eugene', 'Bend', 'Beaverton', 'Medford', 'Oregon City', 'Corvallis']},
-    {'s': 'PA', 'n': 'Pennsylvania', 'c': ['Harrisburg', 'Pittsburgh', 'Philadelphia', 'Lancaster', 'Allentown', 'Erie']},
-    {'s': 'RI', 'n': 'Rhode Island', 'c': ['Providence', 'Newport', 'Warwick', 'Cranston', 'Narragansett', 'Westerly']},
-    {'s': 'SC', 'n': 'South Carolina', 'c': ['Columbia', 'Charleston', 'Myrtle Beach', 'Greenville', 'Rock Hill', 'Clemson']},
-    {'s': 'SD', 'n': 'South Dakota', 'c': ['Pierre', 'Sioux Falls', 'Rapid City', 'Aberdeen', 'Brookings', 'Sturgis', 'Deadwood']},
-    {'s': 'TN', 'n': 'Tennessee', 'c': ['Nashville', 'Memphis', 'Knoxville', 'Gatlinburg', 'Franklin', 'Jackson', 'Cleveland']},
-    {'s': 'TX', 'n': 'Texas', 'c': ['Austin', 'Houston', 'Dallas', 'San Antonio', 'Fort Worth', 'Galveston', 'Waco', 'Arlington']},
-    {'s': 'UT', 'n': 'Utah', 'c': ['Salt Lake City', 'Provo', 'Ogden', 'Park City', 'Moab', 'Orem', 'Logan', 'Sandy', 'Layton']},
-    {'s': 'VT', 'n': 'Vermont', 'c': ['Montpelier', 'Burlington', 'Rutland City', 'Brattleboro', 'Bennington', 'Stowe', 'Barre City']},
-    {'s': 'VA', 'n': 'Virginia', 'c': ['Richmond', 'Charlottesville', 'Norfolk', 'Alexandria', 'Roanke', 'Fairfax', 'Jamestown']},
-    {'s': 'WA', 'n': 'Washington', 'c': ['Olympia', 'Seattle', 'Spokane', 'Tacoma', 'Vancouver', 'Everett', 'Redmon', 'Renton']},
-    {'s': 'WV', 'n': 'West Virginia', 'c': ['Charleston', 'Morgantwon', 'Beckley', 'Fairmont', 'Clarksburg', 'Huntington']},
-    {'s': 'WI', 'n': 'Wisconsin', 'c': ['Madison', 'Milwaukee', 'Green Bay', 'Appleton', 'Kenosha', 'La Crosse', 'Racine']},
-    {'s': 'WY', 'n': 'Wyoming', 'c': ['Cheyenne', 'Jackson', 'Cody', 'Casper', 'Rock Springs', 'Lander', 'Riverton', 'Evanston']}
+    {
+        's': 'AL',
+        'n': 'Alabama',
+        'c': ['Birmingham', 'Mobile', 'Montgomery', 'Gulf Shores', 'Huntsville', 'Auburn', 'Gadsden']
+    }, {
+        's': 'AK',
+        'n': 'Alaska',
+        'c': ['Anchorage', 'Fairbanks', 'Juneau', 'Kodiak', 'Kenai', 'Homer', 'Nome', 'Sitka', 'Wasilla']
+    }, {
+        's': 'AZ',
+        'n': 'Arizona',
+        'c': ['Phoenix', 'Tuscan', 'Scottsdale', 'Mesa', 'Tempe', 'Chandler', 'Flagstaff', 'Glendale']
+    }, {
+        's': 'AR',
+        'n': 'Arkansas',
+        'c': ['Little Rock', 'Fayetteville', 'Fort Smith', 'Hot Springs', 'Rogers', 'Springdale']
+    }, {
+        's': 'CA',
+        'n': 'California',
+        'c': ['Los Angeles', 'San Francisco', 'San Diego', 'Sacramento', 'San Jose', 'Sacramento']
+    }, {
+        's': 'CO',
+        'n': 'Colorado',
+        'c': ['Denver', 'Colorado Springs', 'Boulder', 'Aspen', 'Grand Junction', 'Pueblo', 'Durango']
+    }, {
+        's': 'CT',
+        'n': 'Connecticut',
+        'c': ['Hartford', 'New Haven', 'Stamford', 'Bridgeport', 'Greenwich', 'Milford']
+    }, {
+        's': 'DE',
+        'n': 'Detroit',
+        'c': ['Dover', 'Wimington', 'Newark', 'Milford', 'Middletown', 'Smyrna', 'Lewes']
+    }, {
+        's': 'FL',
+        'n': 'Florida',
+        'c': ['Tallahassee', 'Miami', 'Orlando', 'Tampa', 'Key West', 'Fort Myers', 'Naples', 'Sarasota']
+    }, {
+        's': 'GA',
+        'n': 'Georgia',
+        'c': ['Atlanta', 'Savannah', 'Augusta', 'Athens', 'Alpharetta', 'Macon', 'Kennesaw', 'Decatur']
+    }, {
+        's': 'HI',
+        'n': 'Hawaii',
+        'c': ['Honolulu', 'Kailua', 'Haleiwa', 'Kaneohe', 'Makaha', 'Waimea', 'Haiku', 'Kahuku', 'Kalapana']
+    }, {
+        's': 'ID',
+        'n': 'Idaho',
+        'c': ['Boise', 'Idaho Falls', 'Nampa', 'Twin Falls', 'Moscow', 'Eagle', 'Sandpoint' 'Pocatello']
+    }, {
+        's': 'IL',
+        'n': 'Illinois',
+        'c': ['Springfield', 'Chicago', 'Rockford', 'Evanston', 'Joliet', 'Elgin', 'Peoria', 'Naperville']
+    }, {
+        's': 'IN',
+        'n': 'Indiana',
+        'c': ['Indianapolis', 'Bloomington', 'South Bend', 'Gary', 'Fort Wayne', 'Carmel', 'Michigan City']
+    }, {
+        's': 'IA',
+        'n': 'Iowa',
+        'c': ['Des Moines', 'Iowa City', 'Cedar Rapids', 'Davenport', 'Waterloo', 'Ankeny', 'Siox City']
+    }, {
+        's': 'KS',
+        'n': 'Kansas',
+        'c': ['Topeka', 'Witchita', 'Kansas City', 'Shawnee', 'Manhattan', 'Salina', 'Hutchinson', 'Lenexa']
+    }, {
+        's': 'KY',
+        'n': 'Kentucky',
+        'c': ['Frankfort', 'Louisville', 'Lexington', 'Murray', 'Bowling Green', 'Owensboro', 'Nicholasville']
+    }, {
+        's': 'LA',
+        'n': 'Louisiana',
+        'c': ['Baton Rouge', 'New Orleans', 'Lafayette', 'Alexandria', 'Slidell', 'Kenner', 'Slidell']
+    }, {
+        's': 'ME',
+        'n': 'Maine',
+        'c': ['Augusta', 'Portland', 'Bangor', 'Bar Harbor', 'Camden', 'Lewiston', 'Rockland', 'Ogunquit']
+    }, {
+        's': 'MD',
+        'n': 'Maryland',
+        'c': ['Annapolis', 'Baltimore', 'Rockville', 'Silver Spring', 'College Park']
+    }, {
+        's': 'MA',
+        'n': 'Massachusetts',
+        'c': ['Boston', 'Cambridge', 'Worcester', 'Salem', 'Springfield', 'Waltham', 'Framingham']
+    }, {
+        's': 'MI',
+        'n': 'Michigan',
+        'c': ['Lansing', 'Detroit', 'Ann Arbor', 'Grand Rapids', 'Flint', 'Kalamazoo', 'Troy']
+    }, {
+        's': 'MN',
+        'n': 'Minnesota',
+        'c': ['St. Paul', 'Minneapolis', 'Duluth', 'St. Cloud', 'Mankato', 'Minnetonka', 'Eagan']
+    }, {
+        's': 'MS',
+        'n': 'Mississippi',
+        'c': ['Jackson', 'Biloxi', 'Gulfport', 'Tupelo', 'Oxford', 'Vicksburg', 'Ocean Springs']
+    }, {
+        's': 'MO',
+        'n': 'Missouri',
+        'c': ['Jefferson City', 'St. Louis', 'Kansas City', 'Jefferson City', 'Ozark', 'Joplin']
+    }, {
+        's': 'MT',
+        'n': 'Montana',
+        'c': ['Helena', 'Missoula', 'Billings', 'Bozeman', 'Great Falls', 'Butte', 'Whitefish']
+    }, {
+        's': 'NE',
+        'n': 'Nebraska',
+        'c': ['Lincoln', 'Omaha', 'Grand Island', 'Norfolk', 'Hastings', 'Fremont']
+    }, {
+        's': 'NV',
+        'n': 'Nevada',
+        'c': ['Carson City', 'Las Vegas', 'Reno', 'Henderson', 'Sparks', 'Elko', 'Boulder City']
+    }, {
+        's': 'NH',
+        'n': 'New Hampshire',
+        'c': ['Concord', 'Manchester', 'Portsmouth', 'Keene', 'Derry', 'Lebanon', 'Hanover']
+    }, {
+        's': 'NJ',
+        'n': 'New Jersey',
+        'c': ['Trenton', 'Newark', 'Atlantic City', 'Jersey City', 'Hoboken', 'Cape May', 'Toms River']
+    }, {
+        's': 'NM',
+        'n': 'New Mexico',
+        'c': ['Santa Fe', 'Alburquerque', 'Santa Fe', 'Taos', 'Roswell', 'Farmington']
+    }, {
+        's': 'NY',
+        'n': 'New York',
+        'c': ['Albany', 'Troy', 'New York City', 'Buffalo', 'Syracuse', 'Rochester', 'Ithaca', 'Yonkers']
+    }, {
+        's': 'NC',
+        'n': 'North Carolina',
+        'c': ['Raleigh', 'Charlotte', 'Durham', 'Greensboro', 'Wimington', 'Cary', 'High Point']
+    }, {
+        's': 'ND',
+        'n': 'North Dakota',
+        'c': ['Bismark', 'Fargo', 'Grand Forks', 'Minot', 'Mandan', 'Devils Lake', 'Wahpeton']
+    }, {
+        's': 'OH',
+        'n': 'Ohio',
+        'c': ['Columbus', 'Cleveland', 'Cincinnati', 'Dayton', 'Akron', 'Toledo', 'Canton', 'Kent']
+    }, {
+        's': 'OK',
+        'n': 'Oklahoma',
+        'c': ['Oklahoma City', 'Tulsa', 'Norman', 'Edmond', 'Broken Arrow', 'Stillwater', 'Moore']
+    }, {
+        's': 'OR',
+        'n': 'Oregon',
+        'c': ['Salem', 'Portland', 'Eugene', 'Bend', 'Beaverton', 'Medford', 'Oregon City', 'Corvallis']
+    }, {
+        's': 'PA',
+        'n': 'Pennsylvania',
+        'c': ['Harrisburg', 'Pittsburgh', 'Philadelphia', 'Lancaster', 'Allentown', 'Erie']
+    }, {
+        's': 'RI',
+        'n': 'Rhode Island',
+        'c': ['Providence', 'Newport', 'Warwick', 'Cranston', 'Narragansett', 'Westerly']
+    }, {
+        's': 'SC',
+        'n': 'South Carolina',
+        'c': ['Columbia', 'Charleston', 'Myrtle Beach', 'Greenville', 'Rock Hill', 'Clemson']
+    }, {
+        's': 'SD',
+        'n': 'South Dakota',
+        'c': ['Pierre', 'Sioux Falls', 'Rapid City', 'Aberdeen', 'Brookings', 'Sturgis', 'Deadwood']
+    }, {
+        's': 'TN',
+        'n': 'Tennessee',
+        'c': ['Nashville', 'Memphis', 'Knoxville', 'Gatlinburg', 'Franklin', 'Jackson', 'Cleveland']
+    }, {
+        's': 'TX',
+        'n': 'Texas',
+        'c': ['Austin', 'Houston', 'Dallas', 'San Antonio', 'Fort Worth', 'Galveston', 'Waco', 'Arlington']
+    }, {
+        's': 'UT',
+        'n': 'Utah',
+        'c': ['Salt Lake City', 'Provo', 'Ogden', 'Park City', 'Moab', 'Orem', 'Logan', 'Sandy', 'Layton']
+    }, {
+        's': 'VT',
+        'n': 'Vermont',
+        'c': ['Montpelier', 'Burlington', 'Rutland City', 'Brattleboro', 'Bennington', 'Stowe', 'Barre City']
+    }, {
+        's': 'VA',
+        'n': 'Virginia',
+        'c': ['Richmond', 'Charlottesville', 'Norfolk', 'Alexandria', 'Roanke', 'Fairfax', 'Jamestown']
+    }, {
+        's': 'WA',
+        'n': 'Washington',
+        'c': ['Olympia', 'Seattle', 'Spokane', 'Tacoma', 'Vancouver', 'Everett', 'Redmon', 'Renton']
+    }, {
+        's': 'WV',
+        'n': 'West Virginia',
+        'c': ['Charleston', 'Morgantwon', 'Beckley', 'Fairmont', 'Clarksburg', 'Huntington']
+    }, {
+        's': 'WI',
+        'n': 'Wisconsin',
+        'c': ['Madison', 'Milwaukee', 'Green Bay', 'Appleton', 'Kenosha', 'La Crosse', 'Racine']
+    }, {
+        's': 'WY',
+        'n': 'Wyoming',
+        'c': ['Cheyenne', 'Jackson', 'Cody', 'Casper', 'Rock Springs', 'Lander', 'Riverton', 'Evanston']
+    }
 ]
 
 LOREM_IPSUM_TAGS = [
@@ -185,11 +336,11 @@ LOREM_IPSUM = {
        'lorem. Vestibulum ullamcorper justo et mollis dignissim.',
     3: 'Sed dolor quam, ornare sit amet aliquam a, sollicitudin ac massa. Sed eros tellus, accumsan eu enim a, '
        'dignissim semper enim. Integer sollicitudin ante purus, in pharetra lorem vestibulum vel. Praesent dapibus '
-       'pretium rhoncus. Integer sit amet laoreet urna. Nulla eu vulputate ex. Cras vulputate eu sapien vitae accumsan. '
+       'pretium rhoncus. Integer sit amet laoreet urna. Nulla vulputate ex. Cras vulputate eu sapien vitae accumsan. '
        'Proin elementum massa orci. Aliquam sapien augue, euismod id vulputate vitae, tincidunt et tortor. Praesent '
        'fringilla justo quis aliquet maximus. Cras interdum libero ac eros interdum, nec fermentum ex volutpat.',
     4: 'Donec sem turpis, accumsan sed turpis eget, volutpat interdum augue. Nullam eget dolor tellus. Curabitur metus '
-       'massa, efficitur eu consequat vitae, varius at arcu. Sed rutrum, massa vel commodo malesuada, augue eros auctor '
+       'massa, efficitur eu consequat vitae, varius arcu. Sed rutrum, massa vel commodo malesuada, augue eros auctor '
        'dolor, at lacinia metus massa tristique risus. Class aptent taciti sociosqu ad litora torquent per conubia '
        'nostra, per inceptos himenaeos. Nullam vitae metus varius, gravida augue ac, laoreet nibh. Nulla pulvinar odio '
        'dolor. Sed vestibulum mattis magna non venenatis.',
@@ -211,16 +362,16 @@ LOREM_IPSUM_COMMENTS = {
     4: 'enim, ullamcorper ac porttitor ut, vehicula non turpis. Aliquam erat volutpat. Integer ac augue dignissim odio',
     5: 'Praesent eu feugiat eros. Morbi viverra tortor placerat eros gravida, vel luctus arcu interdum. Sed interdum',
     6: 'molestie iaculis. Aenean ac lorem pretium, congue nibh quis, lacinia nisl. Pellentesque libero metus, sagittis',
-    7: 'sed interdum a, aliquet sit amet dui. Aenean odio nisi, fermentum sit amet arcu non, fermentum ullamcorper',
+    7: 'sed interdum, aliquet sit amet dui. Aenean odio nisi, fermentum sit amet arcu non, fermentum ullamcorper',
     8: 'Sed dolor quam, ornare sit amet aliquam a, sollicitudin ac massa. Sed eros tellus, accumsan eu enim a',
     9: 'dignissim semper enim. Integer sollicitudin ante purus, in pharetra lorem vestibulum vel. Praesent dapibus',
-    10: 'pretium rhoncus. Integer sit amet laoreet urna. Nulla eu vulputate ex. Cras vulputate eu sapien vitae accumsan',
+    10: 'pretium rhoncus. Integer sit amet laoreet urna. Nulla vulputate ex. Cras vulputate eu sapien vitae accumsan',
     11: 'Proin elementum massa orci. Aliquam sapien augue, euismod id vulputate vitae, tincidunt et tortor. Praesent',
     12: 'fringilla justo quis aliquet maximus. Cras interdum libero ac eros interdum, nec fermentum ex volutpat',
-    13: 'Donec sem turpis, accumsan sed turpis eget, volutpat interdum augue. Nullam eget dolor tellus. Curabitur metus',
-    14: 'massa, efficitur eu consequat vitae, varius at arcu. Sed rutrum, massa vel commodo malesuada, augue eros auctor',
+    13: 'Donec sem turpis, accumsan turpis eget, volutpat interdum augue. Nullam eget dolor tellus. Curabitur metus',
+    14: 'massa, efficitur eu consequat vitae, varius at arcu. Sed rutrum, massa commodo malesuada, augue eros auctor',
     15: 'dolor, at lacinia metus massa tristique risus. Class aptent taciti sociosqu ad litora torquent per conubia',
-    16: 'nostra, per inceptos himenaeos. Nullam vitae metus varius, gravida augue ac, laoreet nibh. Nulla pulvinar odio',
+    16: 'nostra, per inceptos himenaeos. Nullam vitae metus varius, gravida augue, laoreet nibh. Nulla pulvinar odio',
     17: 'Suspendisse in fermentum arcu. Aenean mattis euismod lorem, in pretium metus aliquet ac. Curabitur in felis',
     18: 'facilisis, accumsan erat eu, mattis ex. Aenean ultrices nisi arcu, eget scelerisque libero consectetur nec.',
     19: 'Nunc et porta nisi. Vestibulum in turpis imperdiet, fermentum mi in, rutrum nisi. Fusce accumsan nulla quis',

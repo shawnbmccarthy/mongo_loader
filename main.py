@@ -6,10 +6,17 @@ from loader import blog_example, log_example
 
 logging.config.fileConfig('logging.conf', disable_existing_loggers=False)
 
+# TODO: build new loaders
 loader_demos = {
-    'blog': blog_example.start_blog_run
+    'blog': blog_example.start_blog_run,
+    'ecomm': '',
+    'log_parser': ''
 }
 
+
+#
+#
+#
 def setup_parser():
     logger.debug('setting up parser')
     parser = argparse.ArgumentParser(description='loader program')
@@ -19,6 +26,9 @@ def setup_parser():
 
     loader_parser = parser.add_subparsers(help='help for loader types')
 
+    #
+    # blog demo
+    #
     blog_parser = loader_parser.add_parser('blog', help='blog loader help')
     blog_parser.set_defaults(loader='blog')
     blog_parser.add_argument('--users', type=int, action='store', help='number of users', default=900)
@@ -32,6 +42,7 @@ def setup_parser():
     # log_parser.set_defaults(which='log')
     return parser
 
+
 #
 if __name__ == '__main__':
     logger = logging.getLogger(__name__)
@@ -39,8 +50,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     clnt = pymongo.MongoClient(args.url)
-
-    print(args)
 
     try:
         db = clnt.get_database()
