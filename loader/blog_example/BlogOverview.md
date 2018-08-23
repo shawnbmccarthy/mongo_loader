@@ -30,7 +30,6 @@ use cases, some of the things we are thinking about:
 4. **various counts**: show things like sort of counts (round about - might miss some)
 5. **workload isolation**: possibility to implement isolation for analytics
 
-
 ## Change Log
 
 | Date       | Change                                   |
@@ -40,5 +39,6 @@ use cases, some of the things we are thinking about:
 |            | Added `BlogOverview.md`                  |
 |            | Added `stats` to user profile            |
 |            | Cleaned up `generate_blog` functions     |
+| 05-07-2018 | Introduced `SCRAM` to user profile       |
 
 

@@ -14,10 +14,11 @@ loader_demos = {
 }
 
 
-#
-#
-#
 def setup_parser():
+    """
+
+    :return:
+    """
     logger.debug('setting up parser')
     parser = argparse.ArgumentParser(description='loader program')
     parser.add_argument('--url', type=str, action='store', help='mongodb url', required=False,

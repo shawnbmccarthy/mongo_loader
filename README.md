@@ -27,6 +27,11 @@ If the `--drop` flag is used the database will first be dropped before inserting
 
 **future** The loader will support more use cases later 
 
+
+## TODO
+1. move demo descriptions to correct directories
+1. clean up indexing example & correctly name - timeseries maybe?
+
 ## Logging
 
 A logging.conf file is used to control how the data is logged, by default all data is logged to standard out with a 

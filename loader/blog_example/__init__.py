@@ -5,6 +5,7 @@ import time
 from loader import data
 from loader.utils import RepeatedTimer
 from datetime import datetime as dt
+from passlib.hash import scram
 from pymongo.errors import BulkWriteError
 
 #
@@ -55,6 +56,11 @@ BLOG_CATEGORIES = [
 ]
 """Set of top categories found on the web to be used"""
 
+CMS_CONTENT_TYPES = [
+    'html', 'img', 'doc', 'pdf', 'snippet', 'text', 'html_snippet', 'external_url', 'embedded', 'spreadsheet', 'code'
+]
+"""various content types our blog will support"""
+
 GENERATE_BLOG_SECONDS = 2
 """Generate a new blog every 2 seconds"""
 
@@ -92,8 +98,14 @@ FACET_SEARCH_SECONDS = 2
 def _generate_user():
     """
     generate a basic user profile for the blog application, the _id key will be used to get a free index.
+    The scram library from passlib will be used to generate a password of 'password' for every user, this will
+    allow us to build an authentication mechanism as well which can be used for each user.
 
-    TODO: Build more advanced profile features
+    Each user must have a unique name, so our choice for this solution has been to use fname.lname as the unique
+    user name.
+
+    TODO: Build ability to use first character * lname as unique name as well (we can get a ton more users this way)
+
     :return:
     """
     logger.debug('attempting to generate a simple user')
@@ -101,9 +113,12 @@ def _generate_user():
         'fname': random.choice(data.CAST_OF_CHARACTERS)[0],
         'lname': random.choice(data.CAST_OF_CHARACTERS)[1],
         'created_at': dt.now(),
-        'pw': s.token_hex(30),
+        'pw': scram.hash('password'),
         'is_locked': False,
-        'interests': choices(data.LOREM_IPSUM_TAGS, k=random.randint(2, 15)),
+        'last_login': dt.now(),
+        'last_modified': dt.now(),
+        'is_logged_in': False,
+        'interests': choices(BLOG_TAGS, k=random.randint(2, 15)),
         'stats': {
             'likes': 0,
             'shares': 0,
@@ -113,7 +128,7 @@ def _generate_user():
 
     # need to create these keys from existing user keys
     user['_id'] = user['fname'] + '.' + user['lname']
-    user['email'] = user['fname'] + '.' + user['lname'] + '@' + random.choice(data.INTERNET_DOMAINS)
+    user['email'] = {'primary': user['fname'] + '.' + user['lname'] + '@' + random.choice(data.INTERNET_DOMAINS)}
     return user
 
 
