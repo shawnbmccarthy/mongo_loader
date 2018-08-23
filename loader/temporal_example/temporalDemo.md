@@ -94,15 +94,12 @@ for MongoDB.
 
 
 ## Sources
-Without the below sources I would not be able to actually build this demo, a big
-thanks to the smart folks that have shared their knowledge with the world!
 
 1. **[Temporal Database](https://en.wikipedia.org/wiki/Temporal_database)**:
 2. **[SDC](https://en.wikipedia.org/wiki/Slowly_changing_dimension)**:
 3. **[Valid Time](https://en.wikipedia.org/wiki/Valid_time)**:
 4. **[Transaction Time](https://en.wikipedia.org/wiki/Transaction_time)**:
 5. **[An Introduction to Database Systems](https://www.amazon.com/Introduction-Database-Systems-8th/dp/0321197844)**: 8th edition, C.J. Date, Addison Wesley, Chapter 23
-6. **[Artificial Intelligence](https://www.amazon.com/Artificial-Intelligence-Modern-Approach-2nd/dp/0137903952)**: Second Edition, Stuart Russell & Peter Norvig, Prentice Hall (*this is an older edition*)
 
 ## Change Log
 | Date       | Change                                   |
