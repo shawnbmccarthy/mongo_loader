@@ -4,6 +4,12 @@ A python loader for different use cases, the runner will also survive replica se
 sharded based off the _id.  This will allow the performance advisor as well as the profiler to show useful
 index recommendations based off the various use cases
 
+### NOTES
+This project seems like a rambling as I organize all one off projects as well
+as other team goals into one coherent voice....
+I promise (or try to promise) that as each update occurs it will be appropriately
+documented!
+
 ## Usage
 
 ```commandline
@@ -31,6 +37,8 @@ If the `--drop` flag is used the database will first be dropped before inserting
 ## TODO
 1. move demo descriptions to correct directories
 1. clean up indexing example & correctly name - timeseries maybe?
+1. temporal: fix examples not clear cut
+1. clean up readme files - they are horrible right now
 
 ## Logging
 
@@ -205,5 +213,4 @@ Once every 20 seconds all old comments that exceed the 100000 document threshold
 **TODO** possibly introduce code to ensure writes happen successfully 
 
 # Contributors
-shawn McCarthy
-Mike Lynn
+1. shawn McCarthy
